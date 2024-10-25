@@ -1,6 +1,6 @@
 <?php
- // filecount
- // List all files with .ff extension.
+ // file_count
+ // List all files from parse and from folders in parse directory.
  
  $uri = $_SERVER["REQUEST_URI"];
  $use_query = 0;
@@ -12,7 +12,7 @@
   $query = urldecode($query);       
   $use_query = 1; 
  }
- // Gues OS and and call accordingly.
+ // Guess OS and and call accordingly.
  $guess_operating_system = exec("ip -V");
  if ($guess_operating_system == "") {
   // using windows 
@@ -24,7 +24,7 @@
  } else {
   // using linux
   if ($use_query == 0) { 
-   echo  `ls ../parse\/*.fff ../parse\/*.gcode ../parse\/*.gcode | sed "s|../parse/||g"`;
+   echo  `ls ../parse/*.* | sed "s|../parse/||g"`;
   } else {   
    echo `ls "../parse/$query" | grep "\.fff\|\.gcode\|\.ini"`;
   }   
