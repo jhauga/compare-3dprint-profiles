@@ -14,7 +14,8 @@
  }
  // Guess OS and and call accordingly.
  $guess_operating_system = exec("ip -V");
- if ($guess_operating_system == "") {
+ $guess_operating_system_mac = exec("sw_vers");
+ if ($guess_operating_system == "" && $guess_operating_system_mac == "") {      
   // using windows 
   if ($use_query == 0) { 
    echo `dir /A:A /B ..\parse | findstr ".fff .gcode .ini"`;
@@ -22,7 +23,7 @@
    echo `dir /A:A /B "..\parse\\$query\\" | findstr ".fff .gcode .ini"`;
   }    
  } else {
-  // using linux
+  // unix like commands - mac or linux
   if ($use_query == 0) { 
    echo  `ls ../parse/*.* | sed "s|../parse/||g"`;
   } else {   
