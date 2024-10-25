@@ -1,0 +1,6 @@
+{
+ "_default_slicer_" : "Slic3r",
+ "Slic3r" : "=", 
+ "Simplify3D" : "--,--",
+ "PrusaSlicer" : "="
+}

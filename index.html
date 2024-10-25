@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>3D Profile Table</title>
+ 
+ <!--<script src="/js/scripts.js"></script>-->
+ <link rel="icon" href="/favicon.png">
+ 
+ <style>
+  body {
+   margin-left: 50px;
+  }
+  div, {
+   box-sizing: border-box;
+   display: inline-block;
+   position: relative;
+   width: 100%;   
+  }  
+  main {
+   margin: 30px;
+  }
+  div#turnOnOff {
+   position: relative;
+   left: -10px;   
+   margin-top: 20px;
+  }  
+  div#selectProfile {
+   position: relative;
+   left: 20px;  
+   margin-top: 30px;
+  }  
+  div#selectProfile span {
+   display: inline-block;
+   position: relative;   
+   max-width: 350px;
+   min-width: 300px; 
+   left: 0px;
+   margin-left: 100px;
+  }
+  div#selectProfile span:not(span:first-child) select {
+   /*margin-left: 300px;*/
+  }    
+  div#selectProfile span:first-of-type,
+  div#selectProfile span:first-of-type h2 {
+   margin-left: 10px;
+  }  
+  div#selectProfile h2 {  
+   display: inline-block;   
+  } 
+  div#profileTables{
+   display: inline-block;
+   position: relative;   
+   left: -10px;    
+   width: 120%;
+  }
+  div#profileTables h2 {
+   display: block;
+   text-wrap: auto;
+   margin-left: 20px;
+  }  
+  div#profileTables span {
+   display: inline-block;
+   position: relative;
+   max-width: 350px;
+   min-width: 300px;    
+   margin-left: 50px;
+  }   
+  div#profileTables span:first-child {
+   margin-left: 0px !important;
+  }  
+  table.print-table {
+   display: inline;
+  }
+  table tr {
+   display: table;
+   width: 100%;
+  }
+  table tr th, table tr td {
+   display: inline-block;
+   position: relative;
+  }
+  table th.nest, table td.nest {
+   margin-left: 10px;
+   padding-left: 10px !important;
+  }
+  table th.nest.attribute-nest, table td.nest.attribute-nest {
+   left: 10px;
+  }
+  tr {
+   padding: 5px 10px;
+   border-bottom: 1px solid black;
+  }    
+  th.count {
+   max-width: 100px;
+   width: auto;  
+   padding: 3px 10px;
+  }  
+  td.property {
+   max-width: 250px;
+   width: auto;
+   overflow-wrap: anywhere;
+   padding: 0px 10px;
+  }
+  td.value {
+   box-sizing: border-box;
+   overflow-wrap: anywhere;
+   float: right;  
+   max-width: 200px;
+   width: auto;
+  }
+  th.property.nest {
+   margin-left: 55px;
+  }  
+  td.value.nest.attribute-nest {
+   clear: both;
+   padding: 0px;
+  }  
+  td.value.nest {
+   clear: both;
+   padding: 0px;
+  }
+  span#profileNotice {
+   display: inline-block;
+   position: relative;
+   top: 11px;
+   margin-top: -50px;
+   margin-left: 30px;      
+   padding-left: 30px;
+   border-left: 2px solid #0f0f0f;
+  }    
+  span#profileNotice h2 {
+   position: relative;
+   top: 10px;
+   margin-top: -10px;
+  }  
+  button {
+   background: darkslategray;
+   color: white;     
+   margin: 10px;
+   padding: 5px 15px;
+   cursor: pointer;
+   border-radius: 10px;
+  }  
+  select {
+   max-width: 200px;;
+   min-width: 100px;;
+   border-radius: 10px;
+   padding: 5px;
+  } 
+ </style>
+</head>
+
+<body>
+
+<h1 id="pageTitle"></h1>
+
+<p>3D print profile tables below.</p>
+
+<!-- Select directory  -->
+<div id="directoryListID">
+ <select name="directoryList" id="directoryList">
+  <option selected value=""></option>
+ </select>
+</div>
+<!-- Button to show profile differences.  -->
+<div id="turnOnOff"> 
+ <button id="showDiffButton" onclick="updateProfiles()">Show Differences</button>
+ <span id="profileNotice"></span>
+</div>
+
+<!-- Drop downs to select 3d profiles. -->
+<div id="selectProfile">
+<span>
+ <select name="colI" id="colI" class="selectProfiles">
+  <option selected value=""></option>
+ </select> 
+</span>
+<span>
+ <select name="col2" id="col2" class="selectProfiles">
+  <option selected value=""></option>
+ </select> 
+</span>
+<span>
+ <select name="col3" id="col3" class="selectProfiles">
+  <option selected value=""></option>
+ </select> 
+</span> 
+<span>
+ <select name="col4" id="col4" class="selectProfiles">
+  <option selected value=""></option>
+ </select> 
+</span>
+</div>
+
+<!-- Parse the print profiles selected from dropdowns above.  -->
+<main>
+ <div id="profileTables">
+
+ </div>
+</main>
+
+<script src="js/compare3DPrintProfiles.js"></script>
+
+
+</body>
+</html>
